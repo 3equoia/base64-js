@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 | Encoder</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <form class="container">
+        <input class="text" placeholder="Paste Your Text." type="text">
+        <button onclick="converter()">Encode</button>
+        <textarea></textarea>
+    </form>
+    <a class="back" href="/">Back</a>
+
+    <script>
+    let text = null;
+    let result = null;
+    const input = document.querySelector("input.text");
+    const button = document.querySelector("button");
+    const textarea = document.querySelector("textarea");
+    const form = document.querySelector("form")
+
+    input.addEventListener("change", e => {
+        text = e.target.value;
+    });
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+    });
+
+    function converter () {
+        if (!text) return
+        result = btoa(String(text));
+        textarea.textContent = ''
+        input.value = ''
+        textarea.textContent = result
+        textarea.style.display = "block"
+    }
+    </script>
+</body>
+</html>
